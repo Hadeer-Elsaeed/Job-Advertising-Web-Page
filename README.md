@@ -15,4 +15,3 @@ cd into the project's home directory.
 
 run server " python manage.py runserver "
 
-I use postman to test all endpoints
