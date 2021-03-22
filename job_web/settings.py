@@ -146,8 +146,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '77ns3tmk9pog3m'       #Client ID
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'HqQqowRqlCCeSLqq'  #Client Secret
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = 'XXXX'       #Client ID
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'XXXX'  #Client Secret
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_liteprofile', 'r_emailaddress']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['first_name','last_name','email']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
