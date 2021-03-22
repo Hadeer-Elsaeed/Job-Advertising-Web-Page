@@ -1,5 +1,8 @@
 # Job-Advertising-Web-Page
 ![](static/Readme/home.png)
+![](static/Readme/jobs.png)
+![](static/Readme/job.png)
+![](static/Readme/apply.png)
 ![](static/Readme/linkedin.png)
 ## To run this project
 clone the project.
