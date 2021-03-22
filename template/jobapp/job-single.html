@@ -1,0 +1,119 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+
+<section class="site-section">
+    <div class="container">
+
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-8 mb-4 mb-lg-0">
+          <div class="d-flex align-items-center">
+            <div class="border p-2 d-inline-block mr-3 rounded mt-4">
+              <img  style="height: 100px;width:100px; " src="{% static '/' %}{{ job.img }}" alt="Image">
+            </div>
+            <div>
+              <h2>{{job.title}}</h2>
+              <div>
+                <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span><a href="http://testorg.com">{{job.company_name}}</a></span>
+                <span class="m-2"><span class="icon-room mr-2"></span>{{job.location}}</span>
+                <span class="m-2"><span class="icon-clock-o mr-2"></span>
+                  <span class="text-primary">
+                    <span class="text-primary">
+
+                        {% if job.job_type == '1' %}
+                        Full Time
+                        {% elif job.job_type == '2'%}
+                        Part Time
+                        {% else  %}
+                        Internship
+                        {% endif %}
+                      </span>
+                  
+                    
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="row">
+            <div class="col-5">
+              
+  
+              <form action="/bookmark-job/16/" method="POST">
+                <input type="hidden" name="csrfmiddlewaretoken" value="D3PD81wVc8zF1MrrocMnIFt3ZZimrmJtHGux7buEdCk9Kw9s2oAcULqL58vT1aqQ">
+                <input type="hidden" name="job" value="16">
+  
+              </form>
+  
+              
+  
+            </div>
+  
+            <div class="col-7">
+              
+              <form action="/apply-job/{{job.id}}/" method="POST">
+                <input type="hidden" name="csrfmiddlewaretoken" value="D3PD81wVc8zF1MrrocMnIFt3ZZimrmJtHGux7buEdCk9Kw9s2oAcULqL58vT1aqQ">
+                <input type="hidden" name="job" value="{{job.id}}">
+  
+                <input type="submit" class="btn btn-block btn-primary btn-md" value="Apply Now">
+              </form>
+              
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="mb-5">
+            <!-- <figure class="mb-5"><img src="images/job_single_img_1.jpg" alt="Image" class="img-fluid rounded"></figure> -->
+            <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Job
+              {{job.description}}</h3>
+            
+          </div>
+  
+          <div class="row mb-5">
+  
+            
+            <div class="col-6">
+              <form action="/apply-job/{{job.id}}/" method="POST">
+                <input type="hidden" name="csrfmiddlewaretoken" value="D3PD81wVc8zF1MrrocMnIFt3ZZimrmJtHGux7buEdCk9Kw9s2oAcULqL58vT1aqQ">
+                <input type="hidden" name="job" value="{{job.id}}">
+
+                <input type="submit" class="btn btn-block btn-primary btn-md" value="Apply Now">
+              </form>
+            </div>
+            
+          </div>
+  
+        </div>
+        <div class="col-lg-4">
+          <div class="bg-light p-3 border rounded mb-4">
+            <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
+            <ul class="list-unstyled pl-3 mb-0">
+              <li class="mb-2 text-black-50"><strong class="text-dark">Employment Status:</strong>
+                
+                {% if job.job_type == '1' %}
+                Full Time
+                {% elif job.job_type == '2'%}
+                Part Time
+                {% else  %}
+                Internship
+                {% endif %}
+                
+              </li>
+              <li class="mb-2 text-black-50" ><strong class="text-dark">Job Location:</strong> {{job.location}}</li>
+              <li class="mb-2 text-black-50"><strong class="text-dark">Salary:</strong> {{job.salary}}</li>
+              <li class="mb-2 text-black-50"><strong class="text-dark">Application Deadline:</strong> {{job.last_date}}
+              </li>
+            </ul>
+          </div>
+
+  
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

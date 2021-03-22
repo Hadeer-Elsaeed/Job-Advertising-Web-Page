@@ -1,0 +1,35 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+
+
+
+<!-- <div class="col-md-6 text-center">
+    <img src="{{ass.extra_data.picture_url}}" alt="" width="150" height="150" style="border-radius: 50%">
+</div>
+<div class="col-md-6 social-container my-2">                 <p> Signed in via:  Linkedin </p>
+    <p> Name:  {{ ass.extra_data.name }} </p>
+    <p>{{ass.extra_data.first_name}}</p>
+</div> -->
+
+<form method="post" action="save_applicant" class="mt-5 ml-5">
+    {% csrf_token %}
+
+    {{ employee_form.as_p }}
+    {{ employee_form.errors }}
+    {{ employee_form.non_field_errors }}
+
+    <a href="{% url 'social:begin' 'linkedin-oauth2' %}?next={{ request.path}}">Apply Using Linkedin</a>
+    <p><input type="submit" value="Apply"></p>
+</form>
+
+{% for ass in backends.associated %}
+{% if ass.provider == 'linkedin-oauth2' %}
+<script type="text/javascript"> 
+    document.getElementById('id_first_name').value = "{{ass.extra_data.first_name}}"
+    document.getElementById('id_last_name').value = "{{ass.extra_data.last_name}}"
+ </script>
+{%endif%}
+{%endfor%}
+
+{% endblock %}

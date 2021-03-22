@@ -1,0 +1,59 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+
+<div class="flex-container">
+    {% for item in page_obj %}
+    <section class="site-section">
+        <div class="container">
+            <div class="mb-5">
+                <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
+                    <div class="col-md-2">
+                        <a href="#"><img style="border-radius: 10%;" src="{% static '/' %}{{ item.img }}" alt="Image" class="img-fluid" /></a>
+                        <div class="col-md-3 text-md-right">
+
+                        <strong class="text-black">{{item.company_name}}</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="badge badge-primary px-2 py-1 mb-3">
+                            {% if item.job_type == '1' %} 
+                            Full Time 
+                            {% elif item.job_type == '2' %} 
+                            Part Time 
+                            {% else %} 
+                            Internship
+                             {% endif %}
+                        </span>
+                        <h2>
+                            <a href="{% url 'jobapp:single-job' item.id %}">
+                                {{item.title}}
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="col-md-3 text-left">
+                        <h3>{{item.location}}</h3>
+                        <span class="meta"></span>
+                    </div>
+                    <div class="col-md-3 text-md-right">
+                        <strong class="text-black">{{item.salary}}</strong>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+            <div class="row pagination-wrap">
+                <div class="col-md-6 text-center text-md-left">
+                    <div class="custom-pagination ml-auto">
+                        <div class="d-inline-block">
+                            Page <a href="#" class="active">1</a> of 3
+                        </div>
+
+                        <a href="?page=2" class="next">Next</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
